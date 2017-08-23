@@ -17,7 +17,7 @@
 
   var saveButton = $('#save-button');
   var loadButton = $('#load-button');
-
+  // var localStorage = window.localStorage;
   /**
    * Gets the text from the element for you
    * @return {String}
@@ -26,11 +26,27 @@
     return $('#save-me').val();
   }
 
+// let doThisOnSave = function() {     //David added this script instead of the callback function
+//   localStorage.setItem('textboxvalue', $('#save-me').val())
+
+// localStorage.setItem(#save-button.html);
+// saveButton.click(doThisOnSave);     //can take a callback function, or a handler like David added here
+// console.log(localStorage.getItem);
+let setLocStorage = function(){
+  localStorage.setItem('textboxvalue', getText())
+}
+saveButton.click(setLocStorage)
+
   /**
    * Puts different text
    * @param {String} text the stuff you want to put in the box
    */
   function setText(text) {
-    return $('#save-me').val(text);
+    $('#save-me').val(text);
   }
+  
+  loadButton.click(function(){
+    setText(localStorage.getItem('textboxvalue'));
+  })
+
 })();
