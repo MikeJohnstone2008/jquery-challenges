@@ -36,14 +36,56 @@
  *   and how to use it in JS. You will also need to download a sound bite
  */
 
-(function(){
-
+(function() {
+  'use strict';
   //jQuery equivelent to window.onload = function{}
   //code in here wont run until page loads
-  $(function(){
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+  // $(function() {
+  //   let id = "teamone-shoot"
+  // $("#teamone-numshots").click()
 
+  //VARIABLES:
+  // let shots1btn = document.querySelector("#teamone-shoot");--JS way of doing it, longer than jQuery way below
+  let shots1Btn = $("#teamone-shoot");
+  let goals1 = $("#teamone-numhits");
+  let shots1Taken = $("#teamone-numshots");
+  let shots2Btn = $("#teamtwo-shoot");
+  let goals2 = $("#teamtwo-numhits");
+  let shots2Taken = $("#teamtwo-numshots");
+  let resetCount = $("#num-resets");
+  let resetBtn = $("#reset");
 
-
+  //my code:
+  shots1Btn.click(function() {
+    if (getRandomInt(0, 100) > 50) {
+      shots1Taken.html(parseInt(shots1Taken.html()) + 1); //David wrote: let score = parseInt(shots1Taken.html()) + 1;
+      goals1.html(parseInt(goals1.html()) + 1);
+      // $("body.div").css("background-color": "red");
+    } else {
+      shots1Taken.html(parseInt(shots1Taken.html()) + 1);
+    }
   })
+  shots2Btn.click(function() { //add an if stmt
+    if (getRandomInt(0, 100) > 50) {
+      shots2Taken.html(parseInt(shots2Taken.html()) + 1); //David wrote: let score = parseInt(shots1Taken.html()) + 1;
+      goals2.html(parseInt(goals2.html()) + 1);
+      // $("body.div").css("background-color": "blue");
+    } else {
+      shots2Taken.html(parseInt(shots2Taken.html()) + 1);
+    }
+  })
+  resetBtn.click(function() {
+    resetCount.html(parseInt(resetCount.html()) + 1);
+    goals1.html(0);
+    shots1Taken.html(0);
+    goals2.html(0);
+    shots2Taken.html(0);
+  })
+  // $("div.left").css("background-color": "white");
+  // $("div.right").css("background-color": "white");
+
 
 })();
